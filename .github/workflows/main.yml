@@ -38,3 +38,4 @@ jobs:
         run: ssh -i ./key -p ${{ secrets.REMOTE_PORT }} ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ${{ secrets.TARGET }}; php artisan key:generate"
       - name: 'Run generate limpiar cache'
         run: ssh -i ./key -p ${{ secrets.REMOTE_PORT }} ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "cd ${{ secrets.TARGET }}; php artisan php artisan cache:clear"
+
