@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => 'Hogar rayito de luz',
+    'logo' => 'Hogar Rayito de luz',
     'logo_img' => '',
     'logo_img_class' => 'brand-image img-circle ml-3',
     'logo_img_xl' => '',
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'Usuarios',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
