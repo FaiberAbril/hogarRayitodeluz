@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-4 col-form-label">Nombres</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="Nombres" name="Nombres" >
+                              <input type="text" class="form-control" id="Nombres" name="Nombres" required >
                             </div>
                           </div>
                     </div>
@@ -32,7 +32,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-4 col-form-label">Apellidos</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="Apellidos" name="Apellidos" >
+                              <input type="text" class="form-control" id="Apellidos" name="Apellidos" required >
                             </div>
                           </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-4 col-form-label">Cedula</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="Cedula" name="Cedula">
+                              <input type="text" class="form-control" id="Cedula" name="Cedula" required>
                             </div>
                           </div>
                     </div>
@@ -55,7 +55,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-4 col-form-label">Fecha Nacimiento</label>
                             <div class="col-sm-8">
-                              <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento">
+                              <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" required>
                             </div>
                           </div>
                     </div>
@@ -68,10 +68,10 @@
             
 
      <a class="btn btn-app bg-primary" href="/Usuarios">
-    <span class="badge bg-green"></span><i class="fas fa-cogs "></i>  Volver
+    <span class="badge bg-green"></span><i class="fas fa-arrow-circle-left"></i> Volver
 </a>
 
-<button type="submit" class="btn btn-app btn-success"> <i class="fas fa-cogs"></i> Guardar</button>
+<button type="submit" class="btn btn-app bg-success"> <i class="fas fa-save"></i> Guardar</button>
 
 </form>
 @stop

@@ -25,6 +25,7 @@ Route::resource('ConsultaDiaria', ConsultaDiariaController::class);
 Route::get('ConsultaDiaria/{id}', [ConsultaDiariaController::class, 'inicio'], 'inicio')->name('ConsultaDiaria.inicio');
 Route::get('ConsultaDiariaCrear/{id}', [ConsultaDiariaController::class, 'crear'], 'crear')->name('ConsultaDiariaCrear.crear');
 
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

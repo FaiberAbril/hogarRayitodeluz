@@ -46,9 +46,9 @@ return [
     */
 
     'logo' => 'Hogar rayito de luz',
-    'logo_img' => 'img/logo.jpeg',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
-    'logo_img_xl' => 'img/logo.jpeg',
+    'logo_img' => '',
+    'logo_img_class' => 'brand-image img-circle ml-3',
+    'logo_img_xl' => '',
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'AdminLTE',
 
@@ -233,15 +233,15 @@ return [
 
         // Sidebar items:
         [
-            'text' => 'blog',
-            'url'  => '/Equipos',
+            'text' => 'blog ',
+            'url'  => '/Usuarios',
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Usuarios',
-            'url'         => '/usuarios',
+            'text'        => 'Usuarios' ,
+            'url'         => '/Usuarios',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
+            'label'       => 2,
             'label_color' => 'success',
         ]
     ],

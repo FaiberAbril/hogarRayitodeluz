@@ -67,10 +67,10 @@
             
 
      <a class="btn btn-app bg-primary" href="/Usuarios">
-    <span class="badge bg-green"></span><i class="fas fa-cogs "></i>  Volver
-</a>
+     <span class="badge bg-green"></span><i class="fas fa-arrow-circle-left"></i> Volver
+      </a>
 
-<button type="submit" class="btn btn-app btn-success"> <i class="fas fa-cogs"></i> Guardar</button>
+      <button type="submit" class="btn btn-app bg-success"> <i class="fas fa-save"></i> Modificar</button>
 
 </form>
 @stop

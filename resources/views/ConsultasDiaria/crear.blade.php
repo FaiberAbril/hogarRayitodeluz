@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-<form action="/Usuarios" enctype="multipart/form-data" method="POST">
+<form action="/ConsultaDiaria" enctype="multipart/form-data" method="POST">
     @csrf
 
 
@@ -64,15 +64,17 @@
             </div>
         </div>
         <!-- /.card-body -->
+        <input type="hidden" name="Usuarios_id" value="{{$usuario->id}}">
+
     </div>
 
             
 
      <a class="btn btn-app bg-primary"  href="{{ route('ConsultaDiaria.inicio',$usuario->id) }}">
-    <span class="badge bg-green"></span><i class="fas fa-cogs "></i>  Volver
-</a>
+     <span class="badge bg-green"></span><i class="fas fa-arrow-circle-left"></i> Volver Volver
+    </a>
 
-<button type="submit" class="btn btn-app btn-success"> <i class="fas fa-cogs"></i> Guardar</button>
+    <button type="submit" class="btn btn-app bg-success"> <i class="fas fa-save"></i> Guardar</button>
 
 </form>
 @stop

@@ -93,67 +93,79 @@
                 @foreach($usuarios as $usuario)
                 <tr>
                     <td>{{$usuario->Cedula}}</td>
-                    <td>  {{$usuario->Nombres}} {{$usuario->Apellidos}}</td>
+                    <td> {{$usuario->Nombres}} {{$usuario->Apellidos}}</td>
 
-                    <td>   <a class="btn  btn-default"  href="ConsultaDiaria/{{$usuario->id}}">
-                          <i class="fas fa-notes-medical"></i>
-                          </a></td>
-             
+                    <td> 
+                        <a class="btn  btn-default" href="ConsultaDiaria/{{$usuario->id}}">
+                            <i class="fas fa-notes-medical"></i>
+                        </a>
+
+                    </td>
+
                     <td>
 
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default-{{$usuario->id}}">
                             <i class="fas fa-eye"></i>
                         </button>
-                        <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
+
+                        <div class="modal fade" id="modal-default-{{$usuario->id}}" style="display: none;" aria-hidden="true">
                             <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title">Usuario Detallado</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                  </button>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Usuario Detallado</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-5 col-form-label">Nombre
+                                                completo</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail"
+                                                    value="{{$usuario->Nombres}} {{$usuario->Apellidos}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-5 col-form-label">Documento de
+                                                identidad</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value="{{$usuario->Cedula}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-5 col-form-label">Fecha
+                                                Nacimiento</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value="{{$usuario->FechaNacimiento}}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer justify-content-between">
+                                        <button type="button" class="btn btn-danger"
+                                            data-dismiss="modal">Cerrar</button>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="form-group row">
-                                        <label for="staticEmail" class="col-sm-5 col-form-label">Nombre completo</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{$usuario->Nombres}} {{$usuario->Apellidos}}">
-                                        </div>
-                                      </div>
-                                      <div class="form-group row">
-                                        <label for="staticEmail" class="col-sm-5 col-form-label">Documento de identidad</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{$usuario->Cedula}}">
-                                        </div>
-                                      </div>
-                                      <div class="form-group row">
-                                        <label for="staticEmail" class="col-sm-5 col-form-label">Fecha Nacimiento</label>
-                                        <div class="col-sm-7">
-                                          <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{$usuario->FechaNacimiento}}">
-                                        </div>
-                                      </div>
-                                                              
-                                </div>
-                                <div class="modal-footer justify-content-between">
-                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                 </div>
-                              </div>
-                              <!-- /.modal-content -->
+                                <!-- /.modal-content -->
                             </div>
                             <!-- /.modal-dialog -->
-                          </div>
-
+                        </div>
+                    
+                  
                         <form action="{{ route('Usuarios.destroy',$usuario->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-default" id="eliminar"><i class="fas fa-trash-alt"></i></button>
+                            <button type="submit" class="btn btn-default" id="eliminar"><i
+                                    class="fas fa-trash-alt"></i></button>
                         </form>
 
                         <a class="btn  btn-default" href="{{ route('Usuarios.edit', $usuario->id)}}">
-                            <i class="fas fa-edit"></i> 
-                          </a>
-
-                       
+                            <i class="fas fa-edit"></i>
+                        </a>
 
                     </td>
                 </tr>

@@ -56,7 +56,20 @@ class ConsultaDiariaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $consultaDiaria = new ConsultaDiaria();
+        $consultaDiaria->Temperatura = $request->get('Temperatura');
+        $consultaDiaria->PesoCorporal = $request->get('PesoCorporal');
+        $consultaDiaria->PulsoCardiaco = $request->get('PulsoCardiaco');
+        $consultaDiaria->FechaConsulta = $request->get('FechaConsulta');
+        $consultaDiaria->Usuarios_id = $request->get('Usuarios_id');
+        $consultaDiaria->save();
+       
+        $request->session()->flash('Usuario_Creado', 'Consulta realizada con éxito');
+
+        $usuario = Usuario::find($consultaDiaria->Usuarios_id);
+        $consultaDiaria = ConsultaDiaria::where('Usuarios_id', $consultaDiaria->Usuarios_id)->get();
+
+        return view('ConsultasDiaria.index', compact('usuario', 'consultaDiaria'));
     }
 
     /**
@@ -102,8 +115,19 @@ class ConsultaDiariaController extends Controller
      * @param  \App\Models\ConsultaDiaria  $consultaDiaria
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ConsultaDiaria $consultaDiaria)
+    public function destroy($id)
     {
-        //
+        $consultaDiaria = ConsultaDiaria::findOrFail($id);
+        $idusuario = $consultaDiaria->Usuarios_id;
+
+        $consultaDiaria->delete();
+
+        session()->flash('Consulta_Eliminada', 'Consulta se elimino');
+
+        $usuario = Usuario::find($idusuario);
+        $consultaDiaria = ConsultaDiaria::where('Usuarios_id', $consultaDiaria->Usuarios_id)->get();
+
+        return view('ConsultasDiaria.index', compact('usuario', 'consultaDiaria'));
+
     }
 }

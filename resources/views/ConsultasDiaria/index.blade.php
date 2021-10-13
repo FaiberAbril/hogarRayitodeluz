@@ -9,11 +9,11 @@
 
 @section('content')
 
-@if (Session::has('Mantenimiento_creado'))
+@if (Session::has('Usuario_Creado'))
 
 <div class="card bg-success">
     <div class="card-header">
-        <h3 class="card-title">Success</h3>
+        <h3 class="card-title">Consulta Realizada</h3>
 
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
@@ -23,11 +23,11 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        {{session('Mantenimiento_creado') }}
+        {{session('Usuario_Creado') }}
     </div>
     <!-- /.card-body -->
 </div>
-@elseif(Session::has('Mantenimiento_Eliminiar'))
+@elseif(Session::has('Consulta_Eliminada'))
 
 <div class="card bg-danger">
     <div class="card-header">
@@ -41,7 +41,7 @@
     </div>
     <!-- /.card-header -->
     <div class="card-body">
-        {{session('Mantenimiento_Eliminiar') }}
+        {{session('Consulta_Eliminada') }}
     </div>
     <!-- /.card-body -->
 </div>
@@ -66,27 +66,39 @@
             <table class="table table-striped" id="equipostabla">
                 <thead>
                     <tr>
+                    <th scope="col">#</th>
                         <th scope="col">Temperatura</th>
                         <th scope="col">PesoCorporal</th>
                         <th scope="col">PulsoCardiaco</th>
                         <th scope="col">Fecha</th>
+                        <th scope="col">Accion</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($consultaDiaria as $consulta)
                     <tr>
                         <td>{{$consulta->id}}</td>
-                        <td>{{$consulta->FechaMantenimiento}}</td>
-                        <td>{{$consulta->TipoMantenimiento}}</td>
-                        <td>{{$consulta->usuario->nombre}}</td>
+                        <td>{{$consulta->Temperatura}}</td>
+                        <td>{{$consulta->PesoCorporal}}</td>
+                        <td>{{$consulta->PulsoCardiaco}}</td>
+                        <td>{{$consulta->FechaConsulta}}</td>
                         <td>
-                    
+                        <form action="{{ route('ConsultaDiaria.destroy',$consulta->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-default" id="eliminar"><i class="fas fa-trash-alt"></i></button>
+                            </form>
 
                         </td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+
+            <a class="btn btn-app bg-primary" href="/Usuarios">
+     <span class="badge bg-green"></span><i class="fas fa-arrow-circle-left"></i> Volver
+      </a>
 
         </div>
         <!-- /.card-body -->
@@ -111,7 +123,12 @@ $(document).ready(function() {
       "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
     },"order": [[ 0, "desc" ]]
   });
+  $('.dataTables_filterinput[type="search"]').css(
+     {'width':'350px','display':'inline-block'}
+  );
+
 });
+
 </script>
 
 @stop
