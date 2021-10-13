@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ConsultaDiaria;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class ConsultaDiariaController extends Controller
@@ -12,9 +13,22 @@ class ConsultaDiariaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+     
+    }
+
+    public function inicio($id)
+    {
+        $usuario = Usuario::findOrFail($id);
+        $consultaDiaria = ConsultaDiaria::where('Usuario_id', $id)->get();
+        return view('ConsultasDiaria.index', compact('usuario', 'consultaDiaria'));
     }
 
     /**
@@ -24,8 +38,15 @@ class ConsultaDiariaController extends Controller
      */
     public function create()
     {
-        //
+
     }
+
+    public function crear($id)
+    {
+        $usuario = Usuario::find($id);
+        return view('ConsultasDiaria.crear')->with('usuario',$usuario);
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -44,9 +65,12 @@ class ConsultaDiariaController extends Controller
      * @param  \App\Models\ConsultaDiaria  $consultaDiaria
      * @return \Illuminate\Http\Response
      */
-    public function show(ConsultaDiaria $consultaDiaria)
+    public function show($id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        $consultaDiaria = ConsultaDiaria::where('Usuarios_id', $id)->get();
+        return view('ConsultasDiaria.index', compact('usuario', 'consultaDiaria'));
+    
     }
 
     /**

@@ -78,12 +78,13 @@
         <h3 class="card-title">Usuario</h3>
     </div>
     <!-- /.card-header -->
-    <div class="table-responsive">
+    <div class="card-body table-responsive">
         <table class="table table-striped" id="equipostabla">
             <thead>
                 <tr>
                     <th scope="col">Documento</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Notas Medicas</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -93,9 +94,13 @@
                 <tr>
                     <td>{{$usuario->Cedula}}</td>
                     <td>  {{$usuario->Nombres}} {{$usuario->Apellidos}}</td>
-                    
+
+                    <td>   <a class="btn  btn-default"  href="ConsultaDiaria/{{$usuario->id}}">
+                          <i class="fas fa-notes-medical"></i>
+                          </a></td>
              
                     <td>
+
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -148,9 +153,7 @@
                             <i class="fas fa-edit"></i> 
                           </a>
 
-                          <a class="btn  btn-danger" >
-                            <i class="fas fa-files-medical"></i>
-                          </a>
+                       
 
                     </td>
                 </tr>
