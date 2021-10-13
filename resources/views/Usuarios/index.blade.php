@@ -9,6 +9,62 @@
 @section('content')
 
 
+@if (Session::has('Usuario_Creado'))
+
+<div class="card bg-success">
+    <div class="card-header">
+        <h3 class="card-title">Usuario Creado</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+            </button>
+        </div>
+        <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        {{session('Usuario_Creado') }}
+    </div>
+    <!-- /.card-body -->
+</div>
+@elseif(Session::has('Usuario_eliminado'))
+
+<div class="card bg-danger">
+    <div class="card-header">
+        <h3 class="card-title">Danger</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+            </button>
+        </div>
+        <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        {{session('Usuario_eliminado') }}
+    </div>
+    <!-- /.card-body -->
+</div>
+@elseif(Session::has('Usuario_editado'))
+
+<div class="card bg-warning">
+    <div class="card-header">
+        <h3 class="card-title">Danger</h3>
+
+        <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+            </button>
+        </div>
+        <!-- /.card-tools -->
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        {{session('Usuario_editado') }}
+    </div>
+    <!-- /.card-body -->
+</div>
+@endif
+
 
 <a class="btn btn-app bg-primary" href="{{ route('Usuarios.create') }}">
     <span class="badge bg-green"></span>
@@ -41,7 +97,7 @@
              
                     <td>
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-                           Usuario Detallado
+                            <i class="fas fa-eye"></i>
                         </button>
                         <div class="modal fade" id="modal-default" style="display: none;" aria-hidden="true">
                             <div class="modal-dialog">
@@ -82,7 +138,21 @@
                             <!-- /.modal-dialog -->
                           </div>
 
-                        <a class="btn btn-info">Visualizar</a>
+                        <form action="{{ route('Usuarios.destroy',$usuario->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-default" id="eliminar"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+
+                        <a class="btn  btn-default" href="{{ route('Usuarios.edit', $usuario->id)}}">
+                            <i class="fas fa-edit"></i> 
+                          </a>
+
+                          <a class="btn  btn-danger" >
+                            <i class="fas fa-files-medical"></i>
+                          </a>
+
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

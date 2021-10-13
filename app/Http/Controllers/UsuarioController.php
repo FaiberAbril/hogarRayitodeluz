@@ -41,7 +41,18 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->Nombres = $request->get('Nombres');
+        $usuario->Apellidos = $request->get('Apellidos');
+        $usuario->Cedula = $request->get('Cedula');
+        $usuario->FechaNacimiento = $request->get('FechaNacimiento');
+
+        $usuario->save();
+       
+        $request->session()->flash('Usuario_Creado', 'El Usuario ha sido creado con éxito');
+
+        return redirect('/Usuarios');
+
     }
 
     /**
@@ -61,9 +72,10 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuario $usuario)
+    public function edit($id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        return view('Usuarios.editar')->with('usuario',$usuario);
     }
 
     /**
@@ -73,9 +85,19 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, $id)
     {
-        //
+        $usuario =Usuario::find($id);
+        $usuario->Nombres = $request->get('Nombres');
+        $usuario->Apellidos = $request->get('Apellidos');
+        $usuario->Cedula = $request->get('Cedula');
+        $usuario->FechaNacimiento = $request->get('FechaNacimiento');
+
+        $usuario->save();
+       
+        $request->session()->flash('Usuario_editado', 'El Usuario ha sido editado con éxito');
+
+        return redirect('/Usuarios');
     }
 
     /**
@@ -84,8 +106,11 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        $usuario->delete();
+        session()->flash('Usuario_eliminado', 'El Usuario ha sido eliminado con éxito');
+        return redirect('/Usuarios');
     }
 }

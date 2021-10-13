@@ -1,20 +1,19 @@
 @extends('adminlte::page')
 
-@section('title', 'Crear')
+@section('title', 'Editar')
 
 @section('content_header')
 <h1></h1>
 @stop
 
 @section('content')
-<form action="/Usuarios" enctype="multipart/form-data" method="POST">
-    @csrf
-
-
+<form action="{{ route('Usuarios.update', $usuario->id)}}" enctype="multipart/form-data" method="POST">
+@csrf
+    @method('PUT')
 
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Datos del Nuevo Usuario</h3>
+            <h3 class="card-title">Editar Usuario Usuario</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -24,7 +23,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-4 col-form-label">Nombres</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="Nombres" name="Nombres" >
+                              <input type="text" class="form-control" id="Nombres" name="Nombres"  value="{{$usuario->Nombres}}">
                             </div>
                           </div>
                     </div>
@@ -32,7 +31,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-4 col-form-label">Apellidos</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="Apellidos" name="Apellidos" >
+                              <input type="text" class="form-control" id="Apellidos" name="Apellidos" value="{{$usuario->Apellidos}}">
                             </div>
                           </div>
                     </div>
@@ -43,7 +42,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-4 col-form-label">Cedula</label>
                             <div class="col-sm-8">
-                              <input type="text" class="form-control" id="Cedula" name="Cedula">
+                              <input type="text" class="form-control" id="Cedula" name="Cedula" value="{{$usuario->Cedula}}">
                             </div>
                           </div>
                     </div>
@@ -55,7 +54,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-4 col-form-label">Fecha Nacimiento</label>
                             <div class="col-sm-8">
-                              <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento">
+                              <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" value="{{$usuario->FechaNacimiento}}">
                             </div>
                           </div>
                     </div>
