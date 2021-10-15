@@ -60,7 +60,7 @@ class ConsultaDiariaController extends Controller
         $consultaDiaria->Temperatura = $request->get('Temperatura');
         $consultaDiaria->PesoCorporal = $request->get('PesoCorporal');
         $consultaDiaria->PulsoCardiaco = $request->get('PulsoCardiaco');
-        $consultaDiaria->FechaConsulta = $request->get('FechaConsulta');
+        $consultaDiaria->FechaConsulta  = date('Y-m-d');
         $consultaDiaria->Usuarios_id = $request->get('Usuarios_id');
         $consultaDiaria->save();
        

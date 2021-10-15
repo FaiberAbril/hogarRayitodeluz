@@ -46,6 +46,9 @@ class UsuarioController extends Controller
         $usuario->Apellidos = $request->get('Apellidos');
         $usuario->Cedula = $request->get('Cedula');
         $usuario->FechaNacimiento = $request->get('FechaNacimiento');
+        $usuario->Genero = $request->get('Genero');
+        $usuario->Edad = $request->get('Edad');
+
 
         $usuario->save();
        
@@ -92,6 +95,8 @@ class UsuarioController extends Controller
         $usuario->Apellidos = $request->get('Apellidos');
         $usuario->Cedula = $request->get('Cedula');
         $usuario->FechaNacimiento = $request->get('FechaNacimiento');
+        $usuario->Genero = $request->get('Genero');
+        $usuario->Edad = $request->get('Edad');
 
         $usuario->save();
        

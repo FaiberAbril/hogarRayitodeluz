@@ -9,73 +9,19 @@
 @section('content')
 
 
-@if (Session::has('Usuario_Creado'))
 
-<div class="card bg-success">
-    <div class="card-header">
-        <h3 class="card-title">Usuario Creado</h3>
-
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-            </button>
-        </div>
-        <!-- /.card-tools -->
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-        {{session('Usuario_Creado') }}
-    </div>
-    <!-- /.card-body -->
-</div>
-@elseif(Session::has('Usuario_eliminado'))
-
-<div class="card bg-danger">
-    <div class="card-header">
-        <h3 class="card-title">Danger</h3>
-
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-            </button>
-        </div>
-        <!-- /.card-tools -->
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-        {{session('Usuario_eliminado') }}
-    </div>
-    <!-- /.card-body -->
-</div>
-@elseif(Session::has('Usuario_editado'))
-
-<div class="card bg-warning">
-    <div class="card-header">
-        <h3 class="card-title">Danger</h3>
-
-        <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-            </button>
-        </div>
-        <!-- /.card-tools -->
-    </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-        {{session('Usuario_editado') }}
-    </div>
-    <!-- /.card-body -->
-</div>
-@endif
 
 
 <a class="btn btn-app bg-primary" href="{{ route('Usuarios.create') }}">
-    <span class="badge bg-green"></span>
-    <i class="fas fa-cogs "></i> Nuevo Usuario
+Nuevo Usuario
+    <i class="fas fa-plus"></i>
 </a>
 
 
 
 <div class="card card-primary">
     <div class="card-header">
-        <h3 class="card-title">Usuario</h3>
+        <h3 class="card-title">Usuarios</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive">
@@ -144,6 +90,22 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-5 col-form-label">Edad</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value="{{$usuario->Edad}}">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="staticEmail" class="col-sm-5 col-form-label">Genero</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" readonly class="form-control-plaintext"
+                                                    id="staticEmail" value="{{$usuario->Genero}}">
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <div class="modal-footer justify-content-between">
                                         <button type="button" class="btn btn-danger"
@@ -156,7 +118,7 @@
                         </div>
                     
                   
-                        <form action="{{ route('Usuarios.destroy',$usuario->id) }}" method="POST">
+                        <form action="{{ route('Usuarios.destroy',$usuario->id) }}" method="POST" class="formulario-eliminar"> 
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-default" id="eliminar"><i
@@ -190,6 +152,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     $(document).ready(function () {
@@ -199,6 +162,73 @@
             }
         });
     });
+</script>
+
+
+
+@if (Session::has('Usuario_Creado'))
+<script>
+   Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Usuario Creado Correactamente.',
+  showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@elseif(Session::has('Usuario_eliminado'))
+<script>
+   Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Usuario Eliminado',
+  showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@elseif(Session::has('Usuario_editado'))
+<script>
+   Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Usuario Modificado.',
+  showConfirmButton: false,
+  timer: 1500
+})
+</script>
+@endif
+
+<script>
+  $('.formulario-eliminar').submit(function(e){
+        e.preventDefault();
+          
+        Swal.fire({
+        title: 'Estas seguro?',
+        text: "No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminarlo!'
+
+        }).then((result) => {
+        if (result.isConfirmed) {
+            this.submit();
+        }
+        })
+      }
+  );
+
+</script>
+
+
+<script>
+  $('.formulario').submit(function(e){
+        e.preventDefault();
+          
+      }
+  );
+
 </script>
 
 @stop

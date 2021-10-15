@@ -3,8 +3,9 @@
 @section('title', 'Crear consulta')
 
 @section('content_header')
-<h1> Nombre del Usuario : {{$usuario->Nombres}} {{$usuario->Apellidos}}</h1>
-    <h1> Documento de Identidad : {{$usuario->Cedula}}</h1>
+    <h1>Nombre del Usuario :</h1>
+    <h1>{{$usuario->Nombres}} {{$usuario->Apellidos}}</h1>
+    <h1> C.C : {{$usuario->Cedula}}</h1>
 @stop
 
 @section('content')
@@ -15,7 +16,7 @@
 
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Datos de la consulta</h3>
+            <h3 class="card-title">Registro de datos diario:</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -23,9 +24,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-4 col-form-label">Temperatura</label>
+                            <label for="inputEmail3" class="col-sm-4 col-form-label">Temperatura °C</label>
                             <div class="col-sm-8">
-                              <input type="number" step="any"  class="form-control" id="Temperatura" name="Temperatura" >
+                              <input type="number" step="any"  class="form-control" id="Temperatura" name="Temperatura" required>
                             </div>
                           </div>
                     </div>
@@ -33,7 +34,7 @@
                         <div class="form-group row">
                             <label for="inputEmail3" class="col-sm-4 col-form-label">Peso Corporal(kg)</label>
                             <div class="col-sm-8">
-                              <input type="number" step="any" class="form-control" id="PesoCorporal" name="PesoCorporal" >
+                              <input type="number" step="any" class="form-control" id="PesoCorporal" name="PesoCorporal" required>
                             </div>
                           </div>
                     </div>
@@ -42,21 +43,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-4 col-form-label">Pulso Cardiaco</label>
+                            <label for="inputEmail3" class="col-sm-4 col-form-label">Pulso Cardiaco (ppm)</label>
                             <div class="col-sm-8">
-                              <input type="number"  class="form-control" id="PulsoCardiaco" name="PulsoCardiaco">
-                            </div>
-                          </div>
-                    </div>
-                </div>
-
-                
-                <div class="row">
-                    <div class="col-12">
-                        <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-4 col-form-label">Fecha Consulta</label>
-                            <div class="col-sm-8">
-                              <input type="date" class="form-control" id="FechaConsulta" name="FechaConsulta">
+                              <input type="text"  class="form-control" id="PulsoCardiaco" name="PulsoCardiaco" required>
                             </div>
                           </div>
                     </div>

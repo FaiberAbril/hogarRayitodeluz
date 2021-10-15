@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="form-group row">
-                            <label for="inputEmail3" class="col-sm-4 col-form-label">Cedula</label>
+                            <label for="inputEmail3" class="col-sm-4 col-form-label">Cédula </label>
                             <div class="col-sm-8">
                               <input type="text" class="form-control" id="Cedula" name="Cedula" required>
                             </div>
@@ -60,6 +60,32 @@
                           </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-4 col-form-label">Edad </label>
+                            <div class="col-sm-8">
+                              <input type="number" class="form-control" id="Edad" name="Edad" required>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-4 col-form-label">Genero </label>
+                            <div class="col-sm-8">
+                                  <select class="custom-select" id="Genero" name="Genero">
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Femenino">Femenino</option>
+                                  </select>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <!-- /.card-body -->
